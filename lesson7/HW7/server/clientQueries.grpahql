@@ -1,0 +1,134 @@
+# get All Products
+query {
+    getAllProducts {
+        id
+        name
+        color
+        price
+    }
+}
+QUERY VARIABLES
+none
+
+
+
+
+# get product
+query ($prodId: ID!){
+    getProduct(id: $prodId) {
+        name
+        color
+        price
+   }
+}
+QUERY VARIABLES
+{
+    "prodId": "one of the id's in the DB"
+}
+
+
+
+
+#  get All Products Expensive
+query ($price Int) {
+    getAllProductsExpensive(price: $price) {
+        id
+        name
+        color
+        price
+    }
+}
+QUERY VARIABLES
+{
+    "price": 1400
+}
+
+
+
+
+############# mutation #############
+
+
+
+
+# create product
+mutation ($product: ProductInput!) {
+  createProduct(prod: $product)
+}
+QUERY VARIABLES
+{
+    "name": "PC",
+    "color": "Black",
+    "price": 1200
+}
+
+
+
+
+# update product
+mutation ($id: ID!, $name: String, $color: String, $price: Int) {
+    updateProduct(id: $id, name: $name, color: $color, price: $price) {
+        id
+        name
+        color
+        price
+    }
+}
+QUERY VARIABLES
+{
+    "id": "65e09d46bf849aa01f68b77b",
+    "name": "MacBook",
+    "color": "Green",
+    "price": 1050   
+}
+
+
+
+
+# delete product
+mutation ($id: ID!) {
+    deleteProduct(id: $id) {
+        id
+        name
+        color
+        price
+    }
+}
+QUERY VARIABLES
+{
+    "id": "one of the id's in the DB"
+}
+
+
+
+# Update Product Price
+mutation ($id: ID!, $price: Int) {
+    updateProductPrice(id: $id, price: $price) {
+        id
+        name
+        color
+        price
+    }  
+}
+QUERY VARIABLES
+{
+    "id": "one of the id's in the DB",
+    "price": 2400
+}
+
+
+
+
+# delete products with color
+mutation ($color: String!) {
+    deleteProductsColor(color: $color) {
+        id
+        name
+        color
+        price
+    }
+}
+QUERY VARIABLES
+{
+    "color": "Black"
+}
